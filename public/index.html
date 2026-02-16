@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OH MY CAT SHOP</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div id="contenedor-advertencia"></div>
+
+    <div class="container">
+        <div id="view-auth" class="auth-container">
+            <div class="auth-column">
+                <h2>Iniciar Sesión</h2>
+                <form id="loginForm" class="active">
+                    <input type="text" id="logIdentifier" placeholder="Email o Username" required>
+                    <input type="password" id="logPassword" placeholder="Contraseña" required>
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
+            
+            <div class="auth-divider"></div>
+
+            <div class="auth-column">
+                <h2>Crear Cuenta</h2>
+                <form id="registerForm" class="active">
+                    <input type="text" id="regNombre" placeholder="Nombre" required>
+                    <input type="text" id="regApellido" placeholder="Apellido" required>
+                    <input type="text" id="regUsername" placeholder="Username" required>
+                    <input type="email" id="regEmail" placeholder="Correo Electrónico" required>
+                    <input type="password" id="regPassword" placeholder="Contraseña" required>
+                    <button type="submit">Registrarse</button>
+                </form>
+            </div>
+        </div>
+
+        <section id="view-categories" style="display: none;">
+            <header class="header-info">
+                <h1>Bienvenido a OH MY CAT SHOP :)</h1>
+                <p>Empresa 100% mexicana dedicada a la venta de productos para el cuidado gatuno.</p>
+                <hr>
+                <h2>Misión</h2>
+                <p id="Mision1">Nuestra misión es que cada dueño de un hermoso gatito tenga la disponibilidad de adquirir nuestros productos especiales a un bajo costo y con una gran calidad.</p>
+                <hr>
+                <h2>Visión</h2>
+                <p id="Vision1">Poder llegar a cada casa mexicana donde tengan la dicha de tener un gato en sus vidas y ser parte de su historia.</p>
+                <hr>
+            </header>
+            <div class="headerapp">
+                <div>
+                    <h1>Categorías</h1>
+                    <p><strong>Bienvenida/o</strong> <b id="userNameDisp"></b> <span class="badge" id="userRoleDisp"></span></p>
+                </div>
+                <button id="btn-regresar-admin" class="btn-secondary" style="display: none;" onclick="showAdminView()" style="display: none;">Volver al Panel Admin</button>
+            </div>
+            <div id="categories-grid" class="grid"></div>
+            <button onclick="logout()" class="botonlogout">Salir</button>
+        </section>
+
+        <section id="view-products" style="display: none;">
+            <button class="botonback" onclick="showCategoriesView()">← Volver a Categorías</button>
+            <h2 id="currentCategoryTitle">Productos</h2>
+            <div id="products-grid" class="grid"></div> </section>
+
+        <section id="view-admin" style="display: none;">
+            <div class="headerapp">
+                <h1>Panel de Control - Administrador</h1>
+                <div>
+                    <button onclick="showCategoriesView()" class="btn-secondary">Ver Tienda</button>
+                    <button onclick="logout()" class="botonlogout">Salir</button>
+                </div>
+            </div>
+
+            <div class="admin-grid">
+                <div class="admin-card">
+                    <h3>Nueva Categoría</h3>
+                    <form id="createCategoryForm">
+                        <input type="text" id="catNombre" placeholder="Nombre" required>
+                        <button type="submit">Guardar Categoría</button>
+                    </form>
+                </div>
+
+                <div class="admin-card">
+                    <h3>Nuevo Producto</h3>
+                    <form id="createProductForm">
+                        <input type="text" id="prodNombre" placeholder="Nombre" required>
+                        <input type="number" id="prodPrecio" placeholder="Precio" required>
+                        <input type="text" id="prodDescripcion" placeholder="Descripcion" required>
+                        <select id="prodCategory" required></select>
+                        <label for="prodImagen" style="font-size: 0.8rem; display: block; margin-top: 10px;">Imagen del producto:</label>
+                        <input type="file" id="prodImagen" accept="image/*">
+                        <button type="submit" style="background-color: #059669; color: white;">Guardar Producto</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="admin-tables">
+                <div class="admin-card table-section">
+                    <h3>Lista de Categorías</h3>
+                    <div id="admin-list-categories"></div>
+                </div>
+                
+                <div class="admin-card table-section">
+                    <h3>Lista de Productos</h3>
+                    <div id="admin-list-products" class="admin-products-list"></div>
+                </div>
+                
+                <div class="admin-card table-section">
+                    <h3>Lista de Usuarios</h3>
+                    <div id="admin-list-users"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
