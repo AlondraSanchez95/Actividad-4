@@ -14,5 +14,7 @@ jobs:
       env:
         MONGO_URI: ${{ secrets.MONGO_URI }}
         JWT_SECRET: ${{ secrets.JWT_SECRET }}
+        JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}
+        SALT_ROUNDS: ${{ secrets.SALT_ROUNDS }}
         ENVIRONMENT: 'test'
         PORT: 3000
