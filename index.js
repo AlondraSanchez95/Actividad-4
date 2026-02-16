@@ -42,8 +42,8 @@ app.use((err, req, res, next) => {
     });
 });
 
-if (process.env.ENVIRONMENT !== 'test') {
-    app.listen(PORT, () => {
+if (process.env.NODE_ENV !== 'test' && process.env.ENVIRONMENT !== 'test') {
+    app.listen(PORT, '0.0.0.0', () => {
         console.log(`Servidor activo en puerto: http://localhost:${PORT}`);
     });
 }
